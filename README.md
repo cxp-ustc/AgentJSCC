@@ -23,6 +23,8 @@
 
 
 
+
+
 ## Experimental results
 
 We conducted comparative analyses among AgentJSCC, SwinJSCC, and DeepJSCC. The main schemes compared are as follows:
@@ -32,6 +34,8 @@ We conducted comparative analyses among AgentJSCC, SwinJSCC, and DeepJSCC. The m
 3. **AgentJSCC**: JSCC architecture based on the Vision Transformer incorporating the Agent Attention with Channel ModNet.
 
 More experimental results are shown in results.
+
+
 
 
 
@@ -60,6 +64,7 @@ python train.py --training --trainset DIV2K --testset kodak --distortion-metric 
 ```
 python train.py  --trainset DIV2K --testset kodak --distortion-metric MSE --model Agent --channel-type rayleigh --C 32  --multiple-snr 1,4,7,10,13
 ```
+
 
 
 
