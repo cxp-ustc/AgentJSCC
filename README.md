@@ -13,7 +13,7 @@
 
 ## Overview Architecture
 
-![image-20250416142707648](C:\Users\china\Desktop\image-20250416142707648.png)
+![image-20250416142707648](./images/architecture.png)
 
 
 
