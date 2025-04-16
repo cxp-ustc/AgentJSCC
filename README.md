@@ -19,7 +19,7 @@
 
 ## Agent Attention
 
-![image-20250416142800923](C:\Users\china\Desktop\attention)
+![image-20250416142800923](./images/attention.png)
 
 
 
