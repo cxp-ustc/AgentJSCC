@@ -33,9 +33,8 @@ We conducted comparative analyses among AgentJSCC, SwinJSCC, and DeepJSCC. The m
 2. **SwinJSCC w/ SA**: JSCC architecture based on the Swin Transformer with Channel ModNet.
 3. **AgentJSCC**: JSCC architecture based on the Vision Transformer incorporating the Agent Attention with Channel ModNet.
 
-
-Fig. 3 presents a comparison of the visual reconstruction effects of three schemes under different channel conditions, with a fixed CBR of 1/24. The example image is selected from the Kodak test set and has an original resolution of 512×768. To better showcase detailed features, we cropped the center region of the image to 256×256 as the input for image reconstruction. As illustrated in Fig. 3, AgentJSCC more closely reproduces fine details such as the thin lines and textures within the window and suppresses artifacts, aligning more closely with the original image. This demonstrates that our scheme achieves superior performance in terms of detail restoration and color fidelity, thereby delivering more impressive visual reconstruction.
-                                                                            More experimental results are shown in results.
+![image](./results/reverse.png)
+Fig. 3 presents a comparison of the visual reconstruction effects of three schemes under different channel conditions, with a fixed CBR of 1/24. The example image is selected from the Kodak test set and has an original resolution of 512×768. To better showcase detailed features, we cropped the center region of the image to 256×256 as the input for image reconstruction. As illustrated in Fig. 3, AgentJSCC more closely reproduces fine details such as the thin lines and textures within the window and suppresses artifacts, aligning more closely with the original image. This demonstrates that our scheme achieves superior performance in terms of detail restoration and color fidelity, thereby delivering more impressive visual reconstruction. ***More experimental results are shown in [results](./results).***
 
 
 
