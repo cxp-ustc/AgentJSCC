@@ -55,7 +55,8 @@ python train.py --training --trainset DIV2K --testset {kodak/CLIC21/afhq} --dist
 *e.g. testset=kodak , cbr = 0.0417, snr = [1, 4, 7, 10, 13], metric = PSNR, channel = AWGN
 
 ```s
-python train.py --training --trainset DIV2K --testset kodak --distortion-metric MSE --model Agent --channel-type awgn --C 64  --multiple-snr 1,4,7,10,13
+python train.py -T --data-train DIV2K --data-test kodak --metric MSE --arch Agent --channel awgn -c 64 --snr 1,4,7,10,13
+
 ```
 
 ### For test
@@ -63,7 +64,7 @@ python train.py --training --trainset DIV2K --testset kodak --distortion-metric 
 *e.g. testset=afhq , cbr = 0.0208, snr = [1, 4, 7, 10, 13], metric = PSNR, channel = Rayleigh
 
 ```
-python train.py  --trainset DIV2K --testset kodak --distortion-metric MSE --model Agent --channel-type rayleigh --C 32  --multiple-snr 1,4,7,10,13
+python train.py --data-train DIV2K --data-test kodak --metric MSE --arch Agent --channel rayleigh -c 32 --snr 1,4,7,10,13
 ```
 
 
