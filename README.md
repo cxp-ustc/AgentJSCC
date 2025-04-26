@@ -49,7 +49,7 @@ We implement AgentJSCC under python 3.10 ,PyTorch 2.3.1 and cuda11.8.
 ### For train
 
 ```
-python train.py --training --trainset DIV2K --testset {kodak/CLIC21/afhq} --distortion-metric {MSE/MS-SSIM} --model {'Agent'/'Agent_W/O'} --channel-type {awgn/rayleigh} --C  --multiple-snr {random or fixed snr}
+python train.py -T --data-train DIV2K --data-test {kodak|CLIC21|afhq} --metric {MSE|MS-SSIM} --arch {Agent|Agent_W/O} --channel {awgn|rayleigh} -c <LATENT_DIM> --snr <SNR_LIST>
 ```
 
 *e.g. testset=kodak , cbr = 0.0417, snr = [1, 4, 7, 10, 13], metric = PSNR, channel = AWGN
