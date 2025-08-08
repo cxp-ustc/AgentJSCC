@@ -1,9 +1,8 @@
-
-from net.modules import *
+from models.modules import *
 import torch
 
 
-class SwinTransformerBlock(nn.Module):
+class AgentTransformerBlock(nn.Module):
     r""" Swin Transformer Block.
 
     Args:
@@ -188,21 +187,20 @@ class BasicLayer(nn.Module):
 
     def __init__(self, dim, out_dim,input_resolution, depth, num_heads, window_size,
                  mlp_ratio=4., qkv_bias=True, qk_scale=None, drop=0., attn_drop=0.,
-                 drop_path=0., norm_layer=nn.LayerNorm, downsample=None, use_checkpoint=False,
+                 drop_path=0., norm_layer=nn.LayerNorm, downsample=None, 
                  agent_num=49, attn_type='A'):
 
         super().__init__()
         self.dim = dim
         self.input_resolution = input_resolution
         self.depth = depth
-        self.use_checkpoint = use_checkpoint
 
         # build blocks
         attn_types = [(attn_type if attn_type[0] != 'M' else ('A' if i < int(attn_type[1:]) else 'B')) for i in range(depth)]
         window_sizes = [(window_size if attn_types[i] == 'A' else max(8, (window_size // 8))) for i in range(depth)]
         print( window_sizes)
         self.blocks = nn.ModuleList([
-            SwinTransformerBlock(dim=out_dim,  input_resolution=(input_resolution[0] // 2, input_resolution[1] // 2),
+            AgentTransformerBlock(dim=out_dim,  input_resolution=(input_resolution[0] // 2, input_resolution[1] // 2),
                                  num_heads=num_heads, window_size=window_sizes[i],
                                  shift_size=0 if (i % 2 == 0) else window_sizes[i] // 2,
                                  mlp_ratio=mlp_ratio,
@@ -294,12 +292,11 @@ class Agent_Encoder(nn.Module):
                  window_size=7, mlp_ratio=4., qkv_bias=True, qk_scale=None,
                  drop_rate=0., attn_drop_rate=0., drop_path_rate=0.1,
                  norm_layer=nn.LayerNorm, ape=False, patch_norm=True,
-                 use_checkpoint=False,
-                 agent_num=[9, 16, 49, 49], attn_type='BBBB', bottleneck_dim=16,**kwargs):
+                 agent_num=[9, 16, 49, 49], attn_type='BBBB',**kwargs):
         super().__init__()
         self.num_layers = len(depths)
         self.embed_dims = embed_dims
-        self.num_features = bottleneck_dim
+        # self.num_features = bottleneck_dim
         # self.ape = ape
         self.in_chans=in_chans
         self.patch_size=patch_size
@@ -390,7 +387,7 @@ class Agent_Encoder(nn.Module):
 
         x = self.norm(x)
 
-        if model == 'WITT':
+        if model == 'Agent':
             snr_cuda = torch.tensor(snr, dtype=torch.float).to(device)
             snr_batch = snr_cuda.unsqueeze(0).expand(B, -1)
             for i in range(self.layer_num):
